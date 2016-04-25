@@ -1,0 +1,34 @@
+{
+    "name": "Appitized/Configuration",
+    "type": "library",
+    "description": "Application settings via a db table",
+    "keywords": [],
+    "authors": [
+        {
+            "name": "Andy Roberts",
+            "email": "andyroberts@appitized.com",
+            "role": "Lead Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Appitized\\Configuration\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "php artisan vendor:publish --tag=public"
+        ]
+    }
+}
