@@ -19,7 +19,7 @@ class ConfigurationServiceProvider extends ServiceProvider
 
         $this->publishes([
           __DIR__ . '/config/settings.php' => config_path('configuration/settings.php'),
-        ]);
+        ], 'config');
         $this->mergeConfigFrom(__DIR__ . '/config/settings.php',
           'configuration.settings');
     }
