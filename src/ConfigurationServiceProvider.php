@@ -31,6 +31,8 @@ class ConfigurationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app->bind('configuration', function () {
+            return new Configuration;
+        });
     }
 }
