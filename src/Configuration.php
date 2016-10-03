@@ -44,22 +44,12 @@ class Configuration
     {
         $item = DB::table('settings')->where('key', $key)->first();
         if (!$item) {
-            return $default;
-        } else {
-            $value = $this->getMutator($item);
-            settype($value, $item->type);
-
-            return $value;
+            throw new ConfigurationSettingNotFoundException('Configuration setting does not exist for key ' . $key);
         }
-    }
+        $value = $this->getMutator($item);
+        settype($value, $item->type);
 
-    protected function fetchObject($key)
-    {
-        $item = DB::table('settings')->where('key', $key)->first();
-        if (!$item) {
-            throw new ConfigurationSettingNotFoundException('Setting does not exist for key ' . $key);
-        }
-        return $item;
+        return $value;
     }
 
     public function getAll()
