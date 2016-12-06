@@ -51,6 +51,15 @@ class Configuration
 
         return $value;
     }
+    
+    protected function fetchObject($key)
+    {		
+        $item = DB::table('settings')->where('key', $key)->first();		
+        if (!$item) {		
+            throw new ConfigurationSettingNotFoundException('Setting does not exist for key ' . $key);		
+        }		
+        return $item;		
+    }
 
     public function getAll()
     {
